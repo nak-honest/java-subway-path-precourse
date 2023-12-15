@@ -21,6 +21,7 @@ public class MenusFactory {
 
     public Menus createPathMenus() {
         Map<MenuComponent, Runnable> menus = Map.of(
+                PathMenu.LOOKUP_BY_DISTANCE, subwayController::runLookupPathByDistance,
                 PathMenu.BACK, () -> {}
         );
 

@@ -1,9 +1,12 @@
 package subway.controller;
 
+import subway.domain.Path;
+import subway.domain.Station;
 import subway.domain.menu.MainMenu;
 import subway.domain.menu.Menus;
 import subway.domain.menu.MenusFactory;
 import subway.domain.menu.PathMenu;
+import subway.repository.StationRepository;
 import subway.service.ShortestPathService;
 import subway.view.InputView;
 import subway.view.OutputView;
@@ -45,6 +48,9 @@ public class PathController {
     }
 
     public void runLookupPathByDistance() {
+        Station startStation = new Station(inputView.readStartStation());
+        Station endStation = new Station(inputView.readEndStation());
 
+        Path path = shortestPathService.findShortestPathByDistance(startStation, endStation);
     }
 }
