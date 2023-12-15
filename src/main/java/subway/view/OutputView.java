@@ -1,5 +1,10 @@
 package subway.view;
 
+import subway.domain.Path;
+import subway.domain.Station;
+
+import java.util.List;
+
 public class OutputView {
     private final Writer writer;
 
@@ -20,5 +25,19 @@ public class OutputView {
         writer.writeLine("2. 최소 시간");
         writer.writeLine("B. 돌아가기");
         writer.writeLine("");
+    }
+
+    public void writeShortestPath(Path path) {
+        writer.writeLine("## 조회 결과");
+        writer.writeLine("[INFO] ---");
+        writer.writeLine(String.format("[INFO] 총 거리: %dkm", path.getDistance()));
+        writer.writeLine(String.format("[INFO] 총 소요 시간: %d분", path.getDuration()));
+        writer.writeLine("[INFO] ---");
+        writeStations(path.getStations());
+        writer.writeLine("");
+    }
+
+    private void writeStations(List<Station> stations) {
+        stations.forEach(station -> writer.writeLine(String.format("[INFO] %s", station.getName())));
     }
 }

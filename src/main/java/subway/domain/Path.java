@@ -10,4 +10,16 @@ public class Path {
         this.stations = stations;
         this.weight = weight;
     }
+
+    public List<Station> getStations() {
+        return stations;
+    }
+
+    public int getDistance() {
+        return weight.getDistance();
+    }
+
+    public int getDuration() {
+        return weight.getDuration();
+    }
 }

@@ -52,6 +52,7 @@ public class PathController {
         Station endStation = new Station(inputView.readEndStation());
 
         Path path = shortestPathService.findShortestPathByDistance(startStation, endStation);
+        outputView.writeShortestPath(path);
     }
 
     public void runLookupPathByDuration() {
@@ -59,5 +60,6 @@ public class PathController {
         Station endStation = new Station(inputView.readEndStation());
 
         Path path = shortestPathService.findShortestPathByDuration(startStation, endStation);
+        outputView.writeShortestPath(path);
     }
 }
