@@ -36,5 +36,8 @@ public class PathController {
     public void runPathMenu() {
         Menus pathMenus = menusFactory.createPathMenus();
         outputView.writePathMenu();
+        PathMenu pathMenu = PathMenu.of(inputView.readMenu());
+
+        pathMenus.run(pathMenu);
     }
 }

@@ -21,6 +21,7 @@ public class MenusFactory {
 
     public Menus createPathMenus() {
         Map<MenuComponent, Runnable> menus = Map.of(
+                PathMenu.BACK, () -> {}
         );
 
         return new Menus(menus);
