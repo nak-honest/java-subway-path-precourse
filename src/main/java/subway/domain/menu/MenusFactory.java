@@ -13,9 +13,16 @@ public class MenusFactory {
 
     public Menus createMainMenus() {
         Map<MenuComponent, Runnable> menus = Map.of(
+                MainMenu.PATH, subwayController::runPathMenu
         );
 
         return new Menus(menus);
     }
 
+    public Menus createPathMenus() {
+        Map<MenuComponent, Runnable> menus = Map.of(
+        );
+
+        return new Menus(menus);
+    }
 }

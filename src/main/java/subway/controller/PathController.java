@@ -3,6 +3,7 @@ package subway.controller;
 import subway.domain.menu.MainMenu;
 import subway.domain.menu.Menus;
 import subway.domain.menu.MenusFactory;
+import subway.domain.menu.PathMenu;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -22,6 +23,7 @@ public class PathController {
         MainMenu mainMenu = selectMainMenu();
 
         while (!mainMenu.equals(MainMenu.QUIT)) {
+            mainMenus.run(mainMenu);
             mainMenu = selectMainMenu();
         }
     }
@@ -29,5 +31,10 @@ public class PathController {
     private MainMenu selectMainMenu() {
         outputView.writeMainMenu();
         return MainMenu.of(inputView.readMenu());
+    }
+
+    public void runPathMenu() {
+        Menus pathMenus = menusFactory.createPathMenus();
+        outputView.writePathMenu();
     }
 }
