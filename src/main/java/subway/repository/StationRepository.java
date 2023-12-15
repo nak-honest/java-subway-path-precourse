@@ -1,35 +1,41 @@
 package subway.repository;
 
 import subway.domain.Station;
+import subway.util.TextFileReaderWriter;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class StationRepository {
+    private static final String FILE_PATH = "src/main/resources/stations.md";
+    private static final File file = new File(FILE_PATH);
+
     private StationRepository() {}
 
-    private static final List<Station> stations = new ArrayList<>();
-
     public static List<Station> stations() {
-        return Collections.unmodifiableList(stations);
+        return TextFileReaderWriter.readTextFile(file).stream()
+                .map(Station::new)
+                .collect(Collectors.toList());
     }
 
     public static void addStation(Station station) {
-        stations.add(station);
+        TextFileReaderWriter.appendTextFile(file, station.getName());
     }
 
-    public static boolean deleteStation(String name) {
-        return stations.removeIf(station -> Objects.equals(station.getName(), name));
+    public static void deleteStation(String name) {
+        TextFileReaderWriter.removeTextInFile(file, name);
     }
 
     public static void deleteAll() {
-        stations.clear();
+        TextFileReaderWriter.removeAllTextInFile(file);
     }
 
     public static Station findByName(String name) {
-        return stations.stream()
+        return stations().stream()
                 .filter(station -> station.getName().equals(name))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR] 존재하지 않는 역입니다."));
