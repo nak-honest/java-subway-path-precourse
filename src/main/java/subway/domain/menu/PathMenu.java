@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public enum PathMenu implements MenuComponent {
     LOOKUP_BY_DISTANCE("1"),
-    LOOKUP_BY_TIME("2"),
+    LOOKUP_BY_DURATION("2"),
     BACK("B");
 
     private final String menu;

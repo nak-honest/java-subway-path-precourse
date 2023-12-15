@@ -53,4 +53,11 @@ public class PathController {
 
         Path path = shortestPathService.findShortestPathByDistance(startStation, endStation);
     }
+
+    public void runLookupPathByDuration() {
+        Station startStation = new Station(inputView.readStartStation());
+        Station endStation = new Station(inputView.readEndStation());
+
+        Path path = shortestPathService.findShortestPathByDuration(startStation, endStation);
+    }
 }
