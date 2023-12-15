@@ -11,5 +11,16 @@ public class Station {
         return name;
     }
 
-    // 추가 기능 구현
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Station)) {
+            return false;
+        }
+
+        Station station = (Station) o;
+        return station.name.equals(name);
+    }
 }
