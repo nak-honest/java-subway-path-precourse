@@ -13,4 +13,12 @@ public class OutputView {
         writer.writeLine("Q. 종료");
         writer.writeLine("");
     }
+
+    public void writePathMenu() {
+        writer.writeLine("## 경로 기준");
+        writer.writeLine("1. 최단 거리");
+        writer.writeLine("2. 최소 시간");
+        writer.writeLine("B. 돌아가기");
+        writer.writeLine("");
+    }
 }
