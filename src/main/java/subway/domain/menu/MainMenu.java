@@ -2,7 +2,7 @@ package subway.domain.menu;
 
 import java.util.Arrays;
 
-public enum MainMenu {
+public enum MainMenu implements MenuComponent {
     PATH("1"),
     QUIT("Q");
 

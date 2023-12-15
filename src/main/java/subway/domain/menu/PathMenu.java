@@ -2,7 +2,7 @@ package subway.domain.menu;
 
 import java.util.Arrays;
 
-public enum PathMenu {
+public enum PathMenu implements MenuComponent {
     LOOKUP_BY_DISTANCE("1"),
     LOOKUP_BY_TIME("2"),
     BACK("B");
