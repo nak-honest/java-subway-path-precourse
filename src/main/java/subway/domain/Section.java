@@ -28,7 +28,7 @@ public class Section {
     }
 
     private void validateSameSection(Station sourceSection, Station targetStation) {
-        if (!hasStations(sourceSection, targetStation)) {
+        if (sourceSection.equals(targetStation)) {
             throw new IllegalArgumentException("[ERROR] 구간은 서로 다른 두개의 역으로 이루어져야 합니다.");
         }
     }
