@@ -29,6 +29,7 @@ public class Application {
                     List.of("양재역", "양재시민의숲역"), List.of(10, 3));
 
     public static void main(String[] args) {
+        initStationsAndLinesAndSections();
         final Scanner scanner = new Scanner(System.in);
         Writer writer = new Writer(System.out::print, System.out::println);
         InputView inputView = new InputView(scanner::nextLine, writer);
