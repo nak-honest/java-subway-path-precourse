@@ -4,10 +4,7 @@ import subway.domain.Station;
 import subway.util.TextFileReaderWriter;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class StationRepository {
@@ -17,21 +14,21 @@ public class StationRepository {
     private StationRepository() {}
 
     public static List<Station> stations() {
-        return TextFileReaderWriter.readTextFile(file).stream()
+        return TextFileReaderWriter.read(file).stream()
                 .map(Station::new)
                 .collect(Collectors.toList());
     }
 
     public static void addStation(Station station) {
-        TextFileReaderWriter.appendTextFile(file, station.getName());
+        TextFileReaderWriter.append(file, station.getName());
     }
 
     public static void deleteStation(String name) {
-        TextFileReaderWriter.removeTextInFile(file, name);
+        TextFileReaderWriter.removeText(file, name);
     }
 
     public static void deleteAll() {
-        TextFileReaderWriter.removeAllTextInFile(file);
+        TextFileReaderWriter.clear(file);
     }
 
     public static Station findByName(String name) {

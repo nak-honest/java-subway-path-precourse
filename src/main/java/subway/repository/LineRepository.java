@@ -4,10 +4,7 @@ import subway.domain.Line;
 import subway.util.TextFileReaderWriter;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class LineRepository {
@@ -17,21 +14,21 @@ public class LineRepository {
     private LineRepository() {}
 
     public static List<Line> lines() {
-        return TextFileReaderWriter.readTextFile(file).stream()
+        return TextFileReaderWriter.read(file).stream()
                 .map(Line::new)
                 .collect(Collectors.toList());
     }
 
     public static void addLine(Line line) {
-        TextFileReaderWriter.appendTextFile(file, line.getName());
+        TextFileReaderWriter.append(file, line.getName());
     }
 
     public static void deleteLineByName(String name) {
-        TextFileReaderWriter.removeTextInFile(file, name);
+        TextFileReaderWriter.removeText(file, name);
     }
 
     public static void deleteAll() {
-        TextFileReaderWriter.removeAllTextInFile(file);
+        TextFileReaderWriter.clear(file);
     }
 
     public static Line findByName(String name) {

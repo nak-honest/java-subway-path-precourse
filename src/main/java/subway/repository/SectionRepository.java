@@ -20,7 +20,7 @@ public class SectionRepository {
     private SectionRepository() {}
 
     public static List<Section> sections() {
-        return TextFileReaderWriter.readTextFile(file).stream()
+        return TextFileReaderWriter.read(file).stream()
                 .map(SectionRepository::stringToSection)
                 .collect(Collectors.toList());
     }
@@ -37,7 +37,7 @@ public class SectionRepository {
     }
 
     public static void addSection(Section section) {
-        TextFileReaderWriter.appendTextFile(file, sectionToString(section));
+        TextFileReaderWriter.append(file, sectionToString(section));
     }
 
     private static String sectionToString(Section section) {
@@ -53,11 +53,11 @@ public class SectionRepository {
     }
 
     public static void deleteSection(Section deletedSection) {
-        TextFileReaderWriter.removeTextInFile(file, sectionToString(deletedSection));
+        TextFileReaderWriter.removeText(file, sectionToString(deletedSection));
     }
 
     public static void deleteAll() {
-        TextFileReaderWriter.removeAllTextInFile(file);
+        TextFileReaderWriter.clear(file);
     }
 
     public static Section findByStations(Station sourceStation, Station targetStation) {
