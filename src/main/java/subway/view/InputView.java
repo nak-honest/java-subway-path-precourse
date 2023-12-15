@@ -18,4 +18,20 @@ public class InputView {
 
         return menu;
     }
+
+    public String readStartStation() {
+        writer.writeLine("## 출발역을 입력하세요.");
+        String startStation = reader.get();
+        writer.writeLine("");
+
+        return startStation;
+    }
+
+    public String readEndStation() {
+        writer.writeLine("## 도착역을 입력하세요.");
+        String endStation = reader.get();
+        writer.writeLine("");
+
+        return endStation;
+    }
 }
