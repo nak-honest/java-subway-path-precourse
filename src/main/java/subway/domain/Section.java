@@ -1,6 +1,7 @@
 package subway.domain;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Section {
@@ -42,7 +43,12 @@ public class Section {
         }
 
         Section section = (Section) o;
-        return section.stations.equals(stations);
+        return section.stations.equals(stations) && section.weight.equals(weight);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(stations, weight);
     }
 
     public int getDistance() {
@@ -55,5 +61,9 @@ public class Section {
 
     public Set<Station> getStations() {
         return stations;
+    }
+
+    public Weight getWeight() {
+        return weight;
     }
 }

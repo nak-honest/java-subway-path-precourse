@@ -1,6 +1,8 @@
 package subway.domain;
 
-public class Weight {
+import java.util.Objects;
+
+public final class Weight {
     private final int distance;
     private final int duration;
 
@@ -17,6 +19,24 @@ public class Weight {
         if (duration < 0) {
             throw new IllegalArgumentException("[ERROR] 소요 시간은 0 이상이어야 합니다.");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Weight)) {
+            return false;
+        }
+
+        Weight weight = (Weight) o;
+        return weight.distance == distance && weight.duration == duration;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(distance, duration);
     }
 
     public int getDistance() {
