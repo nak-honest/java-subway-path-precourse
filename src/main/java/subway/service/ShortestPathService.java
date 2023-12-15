@@ -1,8 +1,7 @@
 package subway.service;
 
-import subway.domain.Section;
-import subway.domain.ShortestPathFinder;
-import subway.domain.Station;
+import subway.domain.*;
+import subway.repository.SectionRepository;
 
 import java.util.Collections;
 import java.util.List;
@@ -14,9 +13,20 @@ public class ShortestPathService {
         this.shortestPathFinder = shortestPathFinder;
     }
 
-    public List<Section> findShortestPathByDistance(Station sourceStation, Station targetStation) {
+    public Path findShortestPathByDistance(Station sourceStation, Station targetStation) {
         validateSameStation(sourceStation, targetStation);
-        return Collections.emptyList();
+        List<Station> stations = shortestPathFinder.findShortestPathByDistance(sourceStation, targetStation);
+        return new Path(stations, calculateWeight(stations));
+    }
+
+    public Path findShortestPathByDuration(Station sourceStation, Station targetStation) {
+        validateSameStation(sourceStation, targetStation);
+        List<Station> stations = shortestPathFinder.findShortestPathByDuration(sourceStation, targetStation);
+        return new Path(stations, calculateWeight(stations));
+    }
+
+    private Weight calculateWeight(List<Station> stations) {
+        return new Weight(0, 0);
     }
 
     private void validateSameStation(Station sourceStation, Station targetStation) {
