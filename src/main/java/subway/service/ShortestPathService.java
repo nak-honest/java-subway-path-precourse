@@ -5,6 +5,7 @@ import subway.repository.SectionRepository;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class ShortestPathService {
     private final ShortestPathFinder shortestPathFinder;
@@ -26,7 +27,10 @@ public class ShortestPathService {
     }
 
     private Weight calculateWeight(List<Station> stations) {
-        return new Weight(0, 0);
+        return IntStream.range(0, stations.size() - 1)
+                .mapToObj(i -> SectionRepository.findByStations(stations.get(i), stations.get(i + 1)))
+                .map(Section::getWeight)
+                .reduce(new Weight(0, 0), Weight::add);
     }
 
     private void validateSameStation(Station sourceStation, Station targetStation) {

@@ -21,6 +21,10 @@ public final class Weight {
         }
     }
 
+    public Weight add(Weight weight) {
+        return new Weight(distance + weight.distance, duration + weight.duration);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this) {
